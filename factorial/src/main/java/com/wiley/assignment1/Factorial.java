@@ -6,17 +6,17 @@ import java.util.Scanner;
 
 
 public class Factorial {
-	
+
 	 private Scanner scanner;
 	 private PrintStream printStream;
 	 private int num;
-	 
+
 
 	 public Factorial(InputStream inputStream, PrintStream printStream) {
 	      this.scanner = new Scanner(inputStream);
 	      this.printStream = printStream;
 	 }
-	 
+
 	 public int isInputNumberValid()  {
 		 
 		/*
@@ -34,19 +34,22 @@ public class Factorial {
 		*/
 
 		//YOUR CODE STARTS HERE
-		 System.out.println("Enter in a number: ");
-		 int number = scanner.nextInt();
+		 this.printStream.print("Enter in a number: ");
 
-		 if(number >= 1 && number <= 10) {
-			 return number;
-		 } else {
+		 try {
+			 String input = scanner.nextLine();
+			 int number = Integer.parseInt(input);
+			 if (number >= 1 && number <= 10) {
+				 return number;
+			 } else {
+				 this.printStream.print("Please Enter valid Input as number between 1 and 10 only, both inclusive");
+				 return -1;
+			 }
+		 } catch (NumberFormatException e) {
 			 this.printStream.print("Please Enter valid Input as number between 1 and 10 only, both inclusive");
 			 return -1;
 		 }
-
 		//YOUR CODE ENDS HERE
-		 
-			
 	 }
 	
 	 
